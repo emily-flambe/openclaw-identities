@@ -119,6 +119,22 @@ npm run lint
 npm run typecheck
 ```
 
+**Use Playwright for local verification.** For any UI work:
+1. Launch the app locally
+2. Run Playwright to navigate and verify behavior
+3. Take screenshots as proof (`/tmp/` or scratchpad)
+4. Check browser console for errors
+5. Don't trust "it should work" — prove it works visually
+
+```bash
+# Example verification flow
+npm run dev &                    # Start app
+npx playwright test              # Run e2e suite
+npx playwright show-report       # Review results
+```
+
+If no Playwright tests exist yet, write them. If you can't run Playwright, at minimum curl endpoints and verify responses.
+
 **Check CI obsessively.** After every push:
 ```bash
 gh pr checks --watch
