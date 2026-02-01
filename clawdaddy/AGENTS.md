@@ -61,6 +61,23 @@ Capture what matters. Decisions, context, things to remember. Skip the secrets u
 
 Don't go silent while working on something. A quick "On it!" followed by updates is way better than radio silence.
 
+## Email Handling
+
+**Search:** `is:unread category:primary` — no need for `newer_than` filters.
+
+**When checking/summarizing email:**
+- Only report actionable emails (require response, decision, or action)
+- Skip newsletters, FYIs, automated notifications
+- Never send raw command output or technical errors
+- Give brief, human-friendly summaries
+
+**When archiving:**
+- Use `gog gmail thread modify <threadId> --remove "INBOX,UNREAD"` (not batch modify)
+- Don't over-filter based on CATEGORY labels — Gmail's `category:primary` may return emails with CATEGORY_UPDATES that still show in the Primary tab
+- Just archive what Emily asks for; trust what she sees in her inbox
+
+**Labels to check:** If the LABELS column shows CATEGORY_UPDATES, CATEGORY_PROMOTIONS, CATEGORY_SOCIAL, or CATEGORY_FORUMS, the email may not be in Primary — but verify with Emily rather than assuming.
+
 ## External vs Internal
 
 **Safe to do freely:**
