@@ -14,6 +14,8 @@
 - **Only actionable emails** — don't text about newsletters, FYIs, or automated notifications
 - Text only if something requires a response, decision, or action
 
+**Note:** When Emily asks to archive her primary inbox, don't over-filter based on CATEGORY labels. Her Gmail may show emails in Primary even if they have CATEGORY_UPDATES. Just archive what she asks for.
+
 ## Context
 
 *(What do they care about? What projects are they working on? What annoys them? What makes them laugh? Build this over time.)*
