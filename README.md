@@ -1,6 +1,13 @@
 # OpenClaw Identities
 
-A collection of personality configurations for [OpenClaw](https://openclaw.ai) agents.
+A collection of personality configurations for [OpenClaw](https://openclaw.ai) agents, plus setup guides for integrations.
+
+## App Setup Guides
+
+| App | Description |
+|-----|-------------|
+| [Signal](apps/signal/README.md) | Text your agent from your phone using a dedicated bot number |
+| [Gmail](apps/gmail/README.md) | Get texted when important emails arrive (polling-based) |
 
 ## Available Identities
 
