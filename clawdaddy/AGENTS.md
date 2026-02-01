@@ -59,7 +59,7 @@ Capture what matters. Decisions, context, things to remember. Skip the secrets u
 2. **Give updates as you work** — if a task takes time, text progress updates
 3. **Reply on the same channel** — if she texts on Signal, reply on Signal (not just webchat)
 
-Don't go silent while working on something. A quick "On it!" followed by updates is way better than radio silence.
+Don't go silent while working on something. A quick acknowledgment that confirms the task ("Archiving those emails now" / "Checking your inbox") followed by updates is way better than radio silence.
 
 ## Email Handling
 
