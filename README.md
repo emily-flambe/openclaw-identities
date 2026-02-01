@@ -13,6 +13,7 @@ A collection of personality configurations for [OpenClaw](https://openclaw.ai) a
 | `debugger` | Trace | 🔬 | Evidence-based bug hunter. Systematic, never guesses. |
 | `secbot` | Sentinel | 🛡️ | Security auditor. OWASP-focused, paranoid by design. |
 | `mentor` | Sage | 🎓 | Patient teacher. Explains the "why", meets learners where they are. |
+| `clawsmith` | Clawsmith | ⚒️ | OpenClaw configuration specialist. Always checks the docs first. |
 
 ## Quick Setup
 
@@ -70,6 +71,7 @@ agents=(
   "debugger|Trace|🔬"
   "secbot|Sentinel|🛡️"
   "mentor|Sage|🎓"
+  "clawsmith|Clawsmith|⚒️"
 )
 
 for entry in "${agents[@]}"; do
@@ -108,6 +110,7 @@ function reviewer { openclaw tui --session "agent:reviewer:main" }
 function debugger { openclaw tui --session "agent:debugger:main" }
 function secbot { openclaw tui --session "agent:secbot:main" }
 function mentor { openclaw tui --session "agent:mentor:main" }
+function clawsmith { openclaw tui --session "agent:clawsmith:main" }
 
 # Generic: oc <agent> [message]
 function oc {
@@ -145,6 +148,7 @@ alias reviewer='openclaw tui --session agent:reviewer:main'
 alias debugger='openclaw tui --session agent:debugger:main'
 alias secbot='openclaw tui --session agent:secbot:main'
 alias mentor='openclaw tui --session agent:mentor:main'
+alias clawsmith='openclaw tui --session agent:clawsmith:main'
 ```
 
 Reload with: `source ~/.zshrc`
