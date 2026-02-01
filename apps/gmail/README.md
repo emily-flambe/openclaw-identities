@@ -6,7 +6,7 @@ This guide covers setting up Gmail notifications for OpenClaw using polling (cro
 
 - **Use case**: Get texted when important emails arrive
 - **Architecture**: Cron job → isolated agent → checks Gmail via `gog` → texts you via Signal
-- **Filtering**: Only primary inbox, recent emails (no promotions/updates/spam)
+- **Filtering**: Only primary inbox, only actionable emails
 
 ## Prerequisites
 
@@ -74,7 +74,7 @@ Using the OpenClaw cron tool:
   "sessionTarget": "isolated",
   "payload": {
     "kind": "agentTurn",
-    "message": "Check for new unread emails using: gog gmail search 'is:unread category:primary newer_than:1d' --account your.email@gmail.com. If there are any, text <YOUR_PHONE> via Signal with a brief summary. If none, do nothing - don't reply at all.",
+    "message": "Check for new unread emails using: gog gmail search 'is:unread category:primary' --account your.email@gmail.com. If there are actionable emails (requiring a response, decision, or action), text <YOUR_PHONE> via Signal with a brief, human-friendly summary. Never send raw command output, error messages, or technical details. Skip newsletters, FYIs, and automated notifications. If nothing actionable, stay completely silent - no reply at all.",
     "deliver": true,
     "channel": "signal",
     "to": "+1YOURNUMBER"
@@ -101,9 +101,10 @@ Tell your agent what emails matter. Add to `USER.md` in your workspace:
 ```markdown
 ## Email Preferences
 - **Only primary inbox matters** — use `category:primary` not just `in:inbox`
-- **Recent only** — always filter with `newer_than:1d` (or shorter for polling)
 - No promotions, updates, social, forums, or old archived mail
-- Search: `is:unread category:primary newer_than:1d`
+- Search: `is:unread category:primary`
+- **Only actionable emails** — don't text about newsletters, FYIs, or automated notifications
+- Text only if something requires a response, decision, or action
 ```
 
 ## Gmail Search Filters
@@ -120,7 +121,9 @@ Common filters for the `gog gmail search` command:
 | `-category:promotions` | Exclude promotions |
 | `from:someone@example.com` | From specific sender |
 
-Combine them: `is:unread category:primary newer_than:1d`
+Combine them: `is:unread category:primary`
+
+**Note:** The `newer_than` filter is usually unnecessary — `is:unread` is sufficient since read emails won't keep showing up.
 
 ## Cost Considerations
 
@@ -143,13 +146,19 @@ Check that:
 3. Signal channel is working: `openclaw message send --channel signal --to +1NUMBER --message "test"`
 
 ### Old emails showing up
-Add `newer_than:1d` (or shorter) to your search query.
+Use `is:unread` — once emails are read/archived, they won't reappear.
 
 ### Promotions showing up
 Use `category:primary` instead of just `in:inbox`.
 
 ### Agent checks but never texts
-The agent only texts when there are results. Send yourself a test email to verify.
+The agent only texts when there are actionable results. Send yourself a test email to verify.
+
+### Archiving doesn't work (emails still show up)
+The search returns **thread IDs**, not message IDs. Use `gog gmail thread modify <threadId> --remove "INBOX,UNREAD"` instead of batch modify for reliable archiving.
+
+### CATEGORY_UPDATES emails showing in primary
+Gmail's `category:primary` search may return emails that have `CATEGORY_UPDATES` labels but still appear in the Primary tab. Don't over-filter based on labels — trust what the user actually sees in their inbox.
 
 ## Alternative: Push Notifications (Advanced)
 
