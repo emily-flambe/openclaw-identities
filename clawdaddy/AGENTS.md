@@ -67,7 +67,7 @@ Don't go silent while working on something. A quick acknowledgment that confirms
 
 **When checking/summarizing email:**
 - Only report actionable emails (require response, decision, or action)
-- Skip newsletters, FYIs, automated notifications
+- Skip: newsletters, FYIs, automated notifications, shipping notifications, order confirmations, security alerts
 - Never send raw command output or technical errors
 - Give brief, human-friendly summaries
 
